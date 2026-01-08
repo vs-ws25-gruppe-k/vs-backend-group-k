@@ -21,10 +21,10 @@ public class ToDoService {
     private final ToDoRepository toDoRepository;
     private final ToDoItemRequestMapper toDoItemRequestMapper;
 
-    public ResponseEntity<ToDoItem> createToDoItem(ToDoItemRequestDTO newTodo) {
+    public ResponseEntity<ToDoItemResponseDTO> createToDoItem(ToDoItemRequestDTO newTodo) {
         ToDoItem toDoItem = toDoItemRequestMapper.toEntity(newTodo);
         toDoRepository.save(toDoItem);
-        return ResponseEntity.status(HttpStatus.CREATED).body(toDoItem);
+        return ResponseEntity.status(HttpStatus.CREATED).body(toDoItemRequestMapper.toDto(toDoItem));
     }
 
     public ResponseEntity<ToDoItemResponseDTO> updateToDoItem(Long id, ToDoItemRequestDTO todoDetails) {
@@ -33,7 +33,7 @@ public class ToDoService {
 
         existingItem.setTitle(todoDetails.getTitle());
         existingItem.setDescription(todoDetails.getDescription());
-        existingItem.setCompleted(todoDetails.isCompleted());
+        existingItem.setCompleted(todoDetails.getCompleted());
 
         toDoRepository.save(existingItem);
 

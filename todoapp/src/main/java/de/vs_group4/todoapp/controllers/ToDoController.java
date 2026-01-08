@@ -39,7 +39,7 @@ public class ToDoController {
     }
 
     @PostMapping
-    public ResponseEntity<ToDoItem> createTodo(@RequestBody @Valid ToDoItemRequestDTO newTodo) {
+    public ResponseEntity<ToDoItemResponseDTO> createTodo(@RequestBody @Valid ToDoItemRequestDTO newTodo) {
         return toDoService.createToDoItem(newTodo);
     }
 

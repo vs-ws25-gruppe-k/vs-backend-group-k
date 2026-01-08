@@ -8,5 +8,5 @@ public class ToDoItemResponseDTO {
     private Long id;
     private String title;
     private String description;
-    private boolean isCompleted;
+    private Boolean completed;
 }

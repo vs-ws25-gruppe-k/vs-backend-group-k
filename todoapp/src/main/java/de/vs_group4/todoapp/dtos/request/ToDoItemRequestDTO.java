@@ -16,6 +16,6 @@ public class ToDoItemRequestDTO implements Serializable {
     private String description;
 
     @Nullable
-    private Boolean isCompleted;
+    private Boolean completed;
     
 }
