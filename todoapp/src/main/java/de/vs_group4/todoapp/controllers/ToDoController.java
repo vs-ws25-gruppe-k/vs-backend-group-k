@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.vs_group4.todoapp.dtos.request.ToDoItemRequestDTO;
 import de.vs_group4.todoapp.dtos.response.ToDoItemResponseDTO;
-import de.vs_group4.todoapp.models.ToDoItem;
 import de.vs_group4.todoapp.services.ToDoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
