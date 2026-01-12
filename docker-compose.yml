@@ -4,8 +4,6 @@ services:
     image: 'postgres:18.1-trixie'
     env_file:
       - .env
-    ports:
-      - '${POSTGRES_PORT}:5432'
     volumes:
       - ./data:/var/lib/postgresql
     networks:
@@ -20,6 +18,7 @@ services:
     image: ghcr.io/vs-ws25-gruppe-k/todoapp:latest
     env_file:
       - .env
+    # Comment out port when using traefik
     ports:
       - '8080:8080'
     depends_on:
