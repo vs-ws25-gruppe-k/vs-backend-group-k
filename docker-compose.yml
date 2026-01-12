@@ -38,4 +38,6 @@ services:
 networks:
   internal:
     external: false
-  traefik:
+# Uncomment if using traefik
+#  traefik:
+#    external: true
