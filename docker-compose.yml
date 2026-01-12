@@ -1,0 +1,42 @@
+services:
+  postgres_prod:
+    container_name: '${SERVICE_NAME}-postgres'
+    image: 'postgres:18.1-trixie'
+    env_file:
+      - .docker.env
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    volumes:
+      - ./data:/var/lib/postgresql
+    networks:
+      - internal
+
+  backend:
+    container_name: '${SERVICE_NAME}'
+    # Uncomment below to build from source
+    # build:
+    #   context: ../todoapp
+    #   dockerfile: Dockerfile
+    image: ghcr.io/vs-ws25-gruppe-k/todoapp:latest
+    env_file:
+      - .docker.env
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres_prod
+    networks:
+      - internal
+      - traefik
+    # Support for Traefik reverse proxy
+    # Ignore if not using Traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${SERVICE_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${SERVICE_NAME}.rule=Host(`${SERVICE_DOMAIN}`)"
+      - "traefik.http.routers.${SERVICE_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.services.${SERVICE_NAME}.loadbalancer.server.port=${PORT}"
+
+networks:
+  internal:
+    external: false
+  traefik:
