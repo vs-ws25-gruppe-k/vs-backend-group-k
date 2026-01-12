@@ -3,7 +3,7 @@ services:
     container_name: '${SERVICE_NAME}-postgres'
     image: 'postgres:18.1-trixie'
     env_file:
-      - .docker.env
+      - .env
     ports:
       - '${POSTGRES_PORT}:5432'
     volumes:
@@ -19,7 +19,7 @@ services:
     #   dockerfile: Dockerfile
     image: ghcr.io/vs-ws25-gruppe-k/todoapp:latest
     env_file:
-      - .docker.env
+      - .env
     ports:
       - '8080:8080'
     depends_on:

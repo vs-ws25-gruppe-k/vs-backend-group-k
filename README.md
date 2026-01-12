@@ -67,7 +67,7 @@ From the root directory:
 
 ```bash
 # Copy and configure environment file
-cp .docker.env.example .docker.env
+cp .env.example .env
 
 # Start services
 docker-compose up -d
