@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: todoapp
+  name: todoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: todoapp
+    spec:
+      containers:
+        - image: ghcr.io/vs-ws25-gruppe-k/todoapp:main
+          name: todoapp
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/tododb"
+            - name: SPRING_DATSOURCE_USERNAME
+              value: "todouser"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "secret"
+          resources: {}
+status: {}
