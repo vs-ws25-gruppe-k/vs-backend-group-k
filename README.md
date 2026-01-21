@@ -37,8 +37,8 @@ A modern RESTful API backend for a ToDo application built with Spring Boot 4.0.1
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd pvs-backend/todoapp
+git clone https://github.com/vs-ws25-gruppe-k/vs-backend-group-k.git
+cd vs-backend-group-k/todoapp
 ```
 
 ### 2. Local Development
